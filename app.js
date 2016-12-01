@@ -21,7 +21,10 @@ for (var i = 0; i < streamers.length; i++) {
       var streamGame = json.stream.channel.game;
       var streamLink = json.stream._links.self;
       var title = $("<div class='streams'>" + streamTitle + "</div><br />");
+      var otherStuff = $("<div class='streams'>" + streamUser + " " + streamGame + "<br />"
+        + streamLink + "</div><br />")
       $('.results').append(title);
+      $('.results').append(otherStuff);
     }
   })
 }
