@@ -10,16 +10,32 @@ var streamers = [
 
 //make a loop that goes through the streamers array and for each one,
 //getJSON to retrieve the proper values and place in the DOM.
-
+for (var i = 0; i < streamers.length; i++) {
+  $.getJSON("https://wind-bow.hyperdev.space/twitch-api/streams/" + streamers[i] + "?callback=?", function(json) {
+    if (json.stream === null) {
+      $('.results').append("<div class='streams'>" + streamers[i] + " is offline </div><br />");
+    }
+    else {
+      var streamUser = json.stream.channel.display_name;
+      var streamTitle = json.stream.channel.status;
+      var streamGame = json.stream.channel.game;
+      var streamLink = json.stream._links.self;
+      var title = $("<div class='streams'>" + streamTitle + "</div><br />");
+      $('.results').append(title);
+    }
+  })
+}
 // sample API call:
-$.getJSON("https://wind-bow.hyperdev.space/twitch-api/streams/esl_sc2?callback=?", function(json) {
-  var streamUser = json.stream.channel.display_name;
-  var streamTitle = json.stream.channel.status;
-  var streamLink = json.stream._links.self;
-  console.log(streamUser + ": " + streamTitle);
-  console.log(streamLink);
-  console.log(json);
-})
+// $.getJSON("https://wind-bow.hyperdev.space/twitch-api/streams/esl_sc2?callback=?", function(json) {
+//   var streamUser = json.stream.channel.display_name;
+//   var streamTitle = json.stream.channel.status;
+//   var streamGame = json.stream.channel.game;
+//   var streamLink = json.stream._links.self;
+//
+//   console.log(streamUser + ": " + streamTitle);
+//   console.log(streamLink);
+//   console.log(json);
+// })
 
 
 
