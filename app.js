@@ -13,28 +13,30 @@ var streamers = [
 for (var i = 0; i < streamers.length; i++) {
   $.getJSON("https://wind-bow.gomix.me/twitch-api/channels/" + streamers[i] + "?callback=?", function(json) {
    console.log(streamers[i]);
+   var streamUser = json.display_name;
+   var streamTitle = json.status;
+   var streamGame = json.game;
+   var streamLink = json.url;
+   var logo = json.logo;
    if (json.status === null) {
-     $('.results').append("<div class='streambox'>" + json.display_name + " is offline </div><br />");
+     $('.results').append("<div class='streambox'><div class='logo'><img src=" +
+      logo + "></img></div>" + json.display_name + " is offline </div>");
    }
    else if (json.display_name === undefined) {
-     $('.results').append("<div class='streambox'>" + streamers[i] + " user does not exist</div><br />");
+     $('.results').append("<div class='streambox'>"
+      + streamers[i] + " user does not exist</div>");
    }
    else {
-     var streamUser = json.display_name;
-     var streamTitle = json.status;
-     var streamGame = json.game;
-     var streamLink = json.url;
-     var logo = json.logo;
+     if (streamGame === null) {
+       streamGame = "";
+     }
      var title = $("<div class='streambox'><div class='logo'><img src=" + logo +
-                    "></img></div><div class='streaminfo'><div class='streamuser'" + streamUser +
-                    "</div><div class='streamtitle'>" + streamTitle +
-                    "</div><div class='game'><a href=" + streamLink + ">" + streamGame + "</a></div></div></div>");
+                    "></img></div><div class='streaminfo'><div class='streamuser'><a href="
+                    + streamLink + ">" + streamUser +
+                    "</a></div><div class='streamtitle'>" + streamTitle +
+                    "</div><div class='game'>" + streamGame + "</div></div></div>");
      console.log(streamUser);
-     var otherStuff = $("<div class='streams'>" + streamUser + " " + streamGame + "<br />"
-       + streamLink + "</div><br />")
      $('.results').append(title);
-
-    //  $('.streambox').append(otherStuff);
    }
   });
 }

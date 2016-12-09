@@ -4,6 +4,7 @@ body {
   background-image: linear-gradient(260deg, #9e1bd6 0%,
     #c16ecf 100%);
   font-family: 'Lato', 'sans-serif';
+  padding-bottom: 30px; */
 }
 
 .title {
@@ -14,11 +15,22 @@ body {
   color: #c1fff2;
 }
 
+.wrapper {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .results {
   display: flex;
   text-align: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  width: 900px;
+  color: white;
 }
 
 .streambox {
@@ -26,15 +38,25 @@ body {
   width: 50%;
   padding: 10px;
   display: flex;
+  justify-content: flex-start;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .streaminfo {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-content: space-between;
+  text-align: left;
 }
 
 img {
   width: 85px;
   height: auto;
+  margin-right: 10px;
+}
+
+.footer {
+  padding-top: 15px;
 }
