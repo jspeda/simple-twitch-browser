@@ -35,7 +35,6 @@ for (var i = 0; i < streamers.length; i++) {
                     + streamLink + ">" + streamUser +
                     "</a></div><div class='streamtitle'>" + streamTitle +
                     "</div><div class='game'>" + streamGame + "</div></div></div>");
-     console.log(streamUser);
      $('.results').append(title);
    }
   });
